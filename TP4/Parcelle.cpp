@@ -1,5 +1,5 @@
 #include "Parcelle.h"
-
+#include "utility.h"
 Parcelle::Parcelle(const Parcelle& parc)
 {
 	this->_surface			= parc.getSurface();
@@ -56,6 +56,7 @@ void Parcelle::setProprietaire(const std::string& prop)
 void Parcelle::setForme(const Polygone<int>& form)
 {
 	this->_forme = form;
+	this->surface = Calcul_surface(form); //met à jour la surface
 }
 
 std::ostream& operator<<(std::ostream& os, const Parcelle& parcelle) {
@@ -63,7 +64,7 @@ std::ostream& operator<<(std::ostream& os, const Parcelle& parcelle) {
 	os << "Type: " << parcelle.getType() << "\n";
 	os << "Numero: " << parcelle.getNumero() << "\n";
 	os << "Proprietaire: " << parcelle.getProprietaire() << "\n";
-	os << "Surface: " << parcelle.getSurface() << " mï¿½\n";
+	os << "Surface: " << parcelle.getSurface() << " m²\n";
 	//os << "Pourcentage Constructible: " << parcelle.getPConstructible() << "%\n";
 	//os << "Forme: " << parcelle.getForme() << "\n"; // Assuming Polygone has operator<< overloaded
 	return os;

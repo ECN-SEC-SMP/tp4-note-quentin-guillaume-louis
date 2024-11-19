@@ -127,7 +127,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="TP4.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="PolyTests.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Point2D.h" />

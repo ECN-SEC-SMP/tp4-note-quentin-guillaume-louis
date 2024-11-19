@@ -8,7 +8,6 @@ class Parcelle
 public:
 	Parcelle(const Parcelle& parc);
 	Parcelle(int num, std::string prop, Polygone<int> forme);
-	Parcelle(int num, std::string prop, Polygone<float> forme);
 
 	int getNumero() const;
 	std::string getProprietaire() const;

@@ -1,5 +1,4 @@
-#ifndef POINT2D_H
-#define POINT2D_H
+#pragma once
 
 template<typename T>
 class Point2D {
@@ -58,6 +57,3 @@ void Point2D<T>::translate(T x, T y)
 	this->x_ += x;
 	this->y_ += y;
 }
-
-
-#endif // POINT2D_H

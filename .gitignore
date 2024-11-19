@@ -2,3 +2,6 @@
 /TP4/.vs/TP4
 /TP4/TP4/x64/Debug
 /TP4/x64/Debug
+.vscode
+/TP4/*.sln
+/TP4/*.vcxproj*

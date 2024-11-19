@@ -1,10 +1,11 @@
 #include <vector>
+#include "utility.h"
 
 float Calcul_surface(const Parcelle &surface)
 {
-    std::vector<Point2D> points;
+    std::vector<Point2D<float>> points;
     points = surface.getForme().getSommets();
-    unsigned int vector_size = points.size;
+    unsigned int vector_size = points.size();
     int x_current = points[0].getX();                   
     int y_current = points[0].getY();
     int x_future = 0;

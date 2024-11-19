@@ -3,7 +3,7 @@
 
 float Calcul_surface(const Parcelle &surface)
 {
-    std::vector<Point2D<float>> points;
+    std::vector<Point2D<int>> points;
     points = surface.getForme().getSommets();
     unsigned int vector_size = points.size();
     int x_current = points[0].getX();                   

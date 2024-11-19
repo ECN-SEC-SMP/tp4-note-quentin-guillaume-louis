@@ -4,7 +4,7 @@
 #include "Point2D.h"
 #include "Polygone.h"
 
-int main()
+void PolygoneTests()
 {
     // Step 1: Create test points
     Point2D<float> TestPoint = Point2D<float>(5, 6);
@@ -51,6 +51,4 @@ int main()
 
     // Step 7: Print a success message
     std::cout << "All tests passed successfully!\n";
-
-    return 0;
 }

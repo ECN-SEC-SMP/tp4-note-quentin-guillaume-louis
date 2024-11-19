@@ -129,6 +129,10 @@
   <ItemGroup>
     <ClCompile Include="TP4.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Point2D.h" />
+    <ClInclude Include="Polygone.h" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

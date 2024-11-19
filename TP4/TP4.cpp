@@ -2,9 +2,18 @@
 //
 
 #include <iostream>
-
+#include "Point2D.h"
+#include "Polygone.h"
 int main()
 {
+    Point2D<float> TestPoint = Point2D<float>(5,6);
+    Point2D<float> TestPoint2 = Point2D<float>(7, 9);
+    Point2D<float> TestPoint3 = Point2D<float>(10,11);
+    std::vector<Point2D<float>> liste = { TestPoint, TestPoint2 };
+    Polygone<float> PolyTest = Polygone<float>(liste);
+    Polygone<float> PolyTest2 = Polygone<float>(PolyTest);
+    PolyTest2.addPoint(TestPoint3);
+    PolyTest2.translate(10, 10);
     std::cout << "Hello World!\n";
 }
 

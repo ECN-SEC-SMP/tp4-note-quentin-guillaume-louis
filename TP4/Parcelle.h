@@ -14,7 +14,7 @@ public:
 	std::string getProprietaire() const;
 	std::string getType() const;
 	float getSurface() const;
-	Polygone<float> getForme() const;
+	Polygone<int> getForme() const;
 
 	void setNumero(int n);
 	void setProprietaire(const std::string& prop);
@@ -25,11 +25,11 @@ public:
 
 
 private:
-	std::string _type;
-	int			_numero;
-	std::string _propriétaire;
-	float		_surface;
-	int			_forme;
-	int			_pConstructible;
+	std::string		_type;
+	int				_numero;
+	std::string		_proprietaire;
+	float			_surface;
+	Polygone<int>	_forme;
+	int				_pConstructible;
 };
 

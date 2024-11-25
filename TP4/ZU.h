@@ -6,7 +6,8 @@
 using std::string;
 
 template<typename T>
-class ZU : public Constructible<T> {
+class ZU : public Constructible<T> 
+{
 public:
 	ZU() = delete;
 	explicit ZU(const Parcelle& p, T surfaceConstruite = 0);

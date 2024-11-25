@@ -9,7 +9,7 @@ template<typename T>
 class ZU : public Constructible<T> {
 public:
 	ZU() = delete;
-	ZU(const Parcelle& p, T surfaceConstruite = 0);
+	explicit ZU(const Parcelle& p, T surfaceConstruite = 0);
 	~ZU();
 
 	T surfaceConstructible() override;

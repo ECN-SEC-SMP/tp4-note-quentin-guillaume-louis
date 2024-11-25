@@ -14,7 +14,7 @@ float Calcul_surface(const Polygone<int>& form)
     int y_current = points[0].getY();
     int x_future = 0;
     int y_future = 0;
-    float result = (-x_current*y_current)/2;                //premier point - seulement du négatif
+    float result = 0.0;                //premier point - nul
     for(unsigned int i = 0; i < (vector_size-1); i++)       // -1 pour éviter un overflow
     {
         x_future = points[i+1].getX();                      //on récupère les points futurs

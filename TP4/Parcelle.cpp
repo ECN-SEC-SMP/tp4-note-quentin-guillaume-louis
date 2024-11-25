@@ -1,5 +1,5 @@
 #include "Parcelle.h"
-
+#include "utility.h"
 Parcelle::Parcelle(const Parcelle& parc)
 {
 	this->_surface			= parc.getSurface();
@@ -56,6 +56,7 @@ void Parcelle::setProprietaire(const std::string& prop)
 void Parcelle::setForme(const Polygone<int>& form)
 {
 	this->_forme = form;
+	this->_surface = Calcul_surface(form); //met à jour la surface
 }
 
 std::ostream& operator<<(std::ostream& os, const Parcelle& parcelle) {

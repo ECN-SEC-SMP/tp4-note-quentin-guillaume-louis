@@ -1,13 +1,14 @@
+#include "utility.h"
 #include <vector>
 #include <iostream>
 #include <string>
 #include <sstream>
 #include <cstdlib>
 
-float Calcul_surface(const Parcelle &surface)
+float Calcul_surface(const Polygone<int>& form)
 {
     std::vector<Point2D<int>> points;
-    points = surface.getForme().getSommets();
+    points = form.getSommets();
     unsigned int vector_size = points.size();
     int x_current = points[0].getX();                   
     int y_current = points[0].getY();

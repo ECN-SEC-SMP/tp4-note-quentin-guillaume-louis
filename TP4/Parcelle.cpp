@@ -56,7 +56,7 @@ void Parcelle::setProprietaire(const std::string& prop)
 void Parcelle::setForme(const Polygone<int>& form)
 {
 	this->_forme = form;
-	this->surface = Calcul_surface(form); //met à jour la surface
+	this->_surface = Calcul_surface(form); //met à jour la surface
 }
 
 std::ostream& operator<<(std::ostream& os, const Parcelle& parcelle) {

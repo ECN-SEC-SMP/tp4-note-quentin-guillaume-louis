@@ -2,7 +2,7 @@
 #include <iostream>
 #include <string>
 #include <sstream>
-#include <cstdlib> 
+#include <cstdlib>
 
 float Calcul_surface(const Parcelle &surface)
 {

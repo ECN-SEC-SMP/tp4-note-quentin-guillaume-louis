@@ -15,7 +15,7 @@
  * @tparam T The type used to represent the surface area (e.g., int, float).
  */
 template<typename T>
-class Constructible
+class Constructible : public Parcelle<T>
 {
 public:
     /**
@@ -24,6 +24,9 @@ public:
      * Allows the creation of derived class objects.
      */
     Constructible() = default;
+
+
+    Constructible(int num, std::string prop, Polygone<T> forme) : Parcelle<T>(num, prop, forme) {};
 
     /**
      * @brief Pure virtual method to compute the constructible surface area.
@@ -43,5 +46,5 @@ public:
      *
      * @return A string representing the type of the zone.
      */
-    static virtual std::string typeZone() const = 0;
+    virtual std::string typeZone() const = 0;
 };

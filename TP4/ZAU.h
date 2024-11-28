@@ -46,7 +46,7 @@ protected:
  * @param p A reference to a Parcelle object.
  */
 template<typename T>
-ZAU<T>::ZAU(const Parcelle& p)
+ZAU<T>::ZAU(const Parcelle<T>& p)
 {
     parcelle_ = &p;
 }

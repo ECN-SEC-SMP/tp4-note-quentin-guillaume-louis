@@ -31,7 +31,7 @@ float Calcul_surface(const Polygone<int>& form)
 
 }
 
-
+template<typename T>
 std::vector<Point2D<T>> extractCoordinates(const std::string& input) {
     std::vector<Point2D<T>> coordinates;
     size_t start = 0, end;

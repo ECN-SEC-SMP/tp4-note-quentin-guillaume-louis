@@ -3,6 +3,7 @@
 #include "Polygone.h"
 #include <iostream>
 #include "utility.h"
+#include "Constructible.h"
 
 /**
  * @class Parcelle
@@ -16,7 +17,7 @@ public:
      * @brief Copy constructor for Parcelle.
      * @param parc The Parcelle object to copy.
      */
-    Parcelle(const Parcelle& parc);
+    Parcelle(const Parcelle<T>& parc);
 
     /**
      * @brief Constructs a Parcelle with specified properties.
@@ -78,7 +79,7 @@ public:
      * @brief Sets the type of the parcel. This is a pure virtual function.
      * @param type The new type of the parcel.
      */
-    virtual void setType(const std::string& type) = 0;
+    void setType(const std::string& type);
 
     /**
      * @brief Outputs the Parcelle object to the provided output stream.
@@ -86,7 +87,9 @@ public:
      * @param parcelle The Parcelle object to output.
      * @return A reference to the output stream.
      */
-    friend std::ostream& operator<<(std::ostream& os, const Parcelle& parcelle);
+    virtual void affiche(std::ostream& os) {
+        os << "classe Parcelle";
+    };
 
 private:
     std::string _type;             /**< The type of the parcel. */
@@ -95,13 +98,12 @@ private:
     T _surface;                /**< The surface area of the parcel. */
     Polygone<T> _forme;          /**< The polygonal shape of the parcel. */
     int _pConstructible;           /**< Indicates constructibility status (e.g., 0 = not constructible). */
-
 };
 
 
 
 template<typename T>
-Parcelle<T>::Parcelle(const Parcelle& parc)
+Parcelle<T>::Parcelle(const Parcelle<T>& parc)
 {
     this->_surface = parc.getSurface();
     this->_type = parc.getType();
@@ -115,7 +117,6 @@ template<typename T>
 Parcelle<T>::Parcelle(int num, std::string prop, Polygone<T> forme) : _forme(forme), _proprietaire(prop), _numero(num)
 {
     this->_surface = 0.0f;
-    this->_forme = {};
     this->_pConstructible = 0;
 }
 
@@ -188,13 +189,13 @@ void Parcelle<T>::setForme(const Polygone<T>& form)
 }
 
 template<typename T>
-std::ostream& operator<<(std::ostream& os, const Parcelle<T>& parcelle) {
-    os << "Parcelle Information:\n";
-    os << "Type: " << parcelle.getType() << "\n";
-    os << "Numero: " << parcelle.getNumero() << "\n";
-    os << "Proprietaire: " << parcelle.getProprietaire() << "\n";
-    os << "Surface: " << parcelle.getSurface() << " m²\n";
-    //os << "Pourcentage Constructible: " << parcelle.getPConstructible() << "%\n";
-    //os << "Forme: " << parcelle.getForme() << "\n"; // Assuming Polygone has operator<< overloaded
+void Parcelle<T>::setType(const std::string& type) {
+    this->_type = type;
+}
+
+template<typename T>
+std::ostream& operator<<(std::ostream& os, const Parcelle<T>* parcelle) {
+    parcelle->affiche(os);
+
     return os;
 }

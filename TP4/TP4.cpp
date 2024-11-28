@@ -2,17 +2,12 @@
 //
 
 #include <iostream>
-#include "Point2D.h"
-
-using std::cout;
-using std::endl;
+#include "ZA.h"
 
 int main(void)
 {
   // TEST DES CLASSES
-  Point2D<float> points(1.2, 2.4);
-  cout << "Affichage coordonnee de l'objet points" << endl;
-  cout << points << endl;
+  
   return 0;
 }
 

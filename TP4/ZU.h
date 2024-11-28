@@ -6,45 +6,51 @@
 using std::string;
 
 template<typename T>
-class ZU : public Constructible<T> 
+class ZU : public Constructible<T>
 {
 public:
 	ZU() = delete;
-	explicit ZU(const Parcelle& p, T surfaceConstruite = 0);
-	~ZU();
+	explicit ZU(int num, std::string prop, Polygone<T> forme);
 
 	T surfaceConstructible() override;
 	void setSurfaceConstruite(const T& surfaceConstructible);
+	T constructible() const;
 
-	static string typeZone() override {
-		return string("Zone Urbaine");
+	virtual void affiche(std::ostream& os) override {
+		os << "Parcelle Numero: " << this->getNumero() << "\n";
+		os << "Type: " << this->getType() << "\n";
+		os << "Polygone: " << "\n";
+		os << "Proprietaire: " << this->getProprietaire() << "\n";
+		os << "Surface: " << this->getSurface() << " m²\n";
+		os << "% constructible: " << this->constructible() << " m²\n";
+		os << "Surface construite: " << this->surfaceConstruite_ << "\n";
+		os << "Surface a construire restante: " << this->surfaceConstructible() << "\n";
 	}
 
 protected:
-	Parcelle* parcelle_;
 	T surfaceConstruite_;
 };
 
 template<typename T>
-ZU<T>::ZU(const Parcelle& p, T surfaceConstruite)
+ZU<T>::ZU(int num, std::string prop, Polygone<T> forme) : Constructible<T>(num, prop, forme)
 {
-	parcelle_ = &p;
-	surfaceConstruite_ = surfaceConstruite;
-}
-
-template<typename T>
-ZU<T>::~ZU() {
-	parcelle_ = nullptr;
+	surfaceConstruite_ = 0;
+	this->setType("ZU");
 }
 
 template<typename T>
 T ZU<T>::surfaceConstructible() {
-	return parcelle_->getSurface() - surfaceConstruite_;
+	return this->getSurface() - surfaceConstruite_;
 }
 
 template<typename T>
 void ZU<T>::setSurfaceConstruite(const T& surfaceConstructible) {
 	surfaceConstruite_ = surfaceConstructible;
+}
+
+template<typename T>
+T ZU<T>::constructible() const {
+	return (1 - (surfaceConstruite_ / this->getSurface()));
 }
 
 #endif // ZU_H

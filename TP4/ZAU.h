@@ -17,56 +17,46 @@ public:
      * @brief Default constructor is deleted.
      */
     ZAU() = delete;
+    explicit ZAU(int num, std::string prop, Polygone<T> forme);
 
-    /**
-     * @brief Constructs a ZAU object with a given parcelle.
-     * @param p A reference to a Parcelle object.
-     */
-    ZAU(const Parcelle& p);
-
+    T constructible() const;
     /**
      * @brief Calculates the constructible surface of the zone.
      * @return The surface area of the zone as type T.
      */
     T surfaceConstructible() override;
-
-    /**
-     * @brief Retrieves the type of the zone.
-     * @return A string representing the type of zone ("Zone A Urbaniser").
-     */
-    static std::string typeZone() override;
+    void setSurfaceConstruite(const T& surfaceConstructible);
+    virtual void affiche(std::ostream& os) override {
+        os << "Parcelle Numero: " << this->getNumero() << "\n";
+        os << "Type: " << this->getType() << "\n";
+        os << "Polygone: " << "\n";
+        os << "Proprietaire: " << this->getProprietaire() << "\n";
+        os << "Surface: " << this->getSurface() << " m²\n";
+        os << "% constructible: " << this->constructible() << " m²\n";
+    }
 
 protected:
-    Parcelle* parcelle_; /**< Pointer to a Parcelle object representing the zone's parcel. */
+    T surfaceConstruite_;
 };
 
-/**
- * @brief Constructs a ZAU object and associates it with a Parcelle.
- * @tparam T The type used to represent the surface of the constructible area.
- * @param p A reference to a Parcelle object.
- */
 template<typename T>
-ZAU<T>::ZAU(const Parcelle<T>& p)
+ZAU<T>::ZAU(int num, std::string prop, Polygone<T> forme) : Constructible<T>(num, prop, forme)
 {
-    parcelle_ = &p;
+    surfaceConstruite_ = 0;
+    this->setType("ZAU");
 }
 
-/**
- * @brief Computes the constructible surface based on the associated Parcelle.
- * @tparam T The type used to represent the surface of the constructible area.
- * @return The surface area of the associated Parcelle.
- */
 template<typename T>
 T ZAU<T>::surfaceConstructible() {
     return parcelle_->getSurface();
 }
 
-/**
- * @brief Retrieves the type of the zone as a static string.
- * @tparam T The type used to represent the surface of the constructible area.
- * @return A string representing the type of zone ("Zone A Urbaniser").
- */
 template<typename T>
-std::string ZAU<T>::typeZone() {
-    return std::string("Zone A Urbaniser");
+void ZAU<T>::setSurfaceConstruite(const T& surfaceConstructible) {
+    surfaceConstruite_ = surfaceConstructible;
+}
+
+template<typename T>
+T ZAU<T>::constructible() const {
+    return (1 - (surfaceConstruite_ / this->getSurface()));
 }

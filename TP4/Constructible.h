@@ -1,8 +1,8 @@
 #pragma once
 
-#include <string.h>
+#include <string>
 #include <iostream>
-#include "Parcelle.h"
+#include "Parcelle.h"  // Assurez-vous d'inclure Parcelle.h
 
 /**
  * @class Constructible
@@ -25,8 +25,7 @@ public:
      */
     Constructible() = default;
 
-
-    Constructible(int num, std::string prop, Polygone<T> forme) : Parcelle<T>(num, prop, forme) {};
+    Constructible(int num, std::string prop, Polygone<T> forme);
 
     /**
      * @brief Pure virtual method to compute the constructible surface area.
@@ -36,15 +35,12 @@ public:
      *
      * @return The surface area of the constructible zone as type T.
      */
-    virtual T surfaceConstructible() = 0;
+    virtual T surfaceConstructible() = 0;  // Méthode virtuelle pure
 
-    /**
-     * @brief Pure virtual method to retrieve the type of the zone.
-     *
-     * Derived classes must implement this method to specify the type
-     * of zone as a string.
-     *
-     * @return A string representing the type of the zone.
-     */
-    virtual std::string typeZone() const = 0;
 };
+
+// Définition du constructeur dans le fichier source (si nécessaire)
+template<typename T>
+Constructible<T>::Constructible(int num, std::string prop, Polygone<T> forme) {    
+    this->Parcelle<T>(num, prop, forme);
+}

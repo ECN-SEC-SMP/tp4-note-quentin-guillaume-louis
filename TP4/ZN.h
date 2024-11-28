@@ -21,12 +21,10 @@ public:
     ZN() = delete;
 
 
-    ZN(int num, std::string prop, Polygone<T> forme);
-
-    /**
-     * @brief Destructor.
-     */
-    ~ZN();
+    ZN(int num, std::string prop, Polygone<T> forme) : Constructible<T>(num, prop, forme)
+    {
+        this->setType("ZN");
+    }
 
     /**
      * @brief Returns the constructible surface area for the zone.
@@ -34,60 +32,26 @@ public:
      * @return The constructible surface area, which is always 0 for ZN.
      */
     T surfaceConstructible() override;
-
     /**
      * @brief Sets the constructible surface area.
      *
      * @param surfaceConstructible New constructible surface area.
      */
-    void setSurfaceConstruite(const T& surfaceConstructible) const;
 
-    /**
-     * @brief Retrieves the type of zone.
-     *
-     * @return A string representing the type ("Zone Naturelle").
-     */
-    std::string typeZone() const override ;
-
-
-    void setType(const std::string& type);
+    virtual void affiche(std::ostream& os) override {
+        os << "Parcelle Numero: " << this->getNumero() << "\n";
+        os << "Type: " << this->getType() << "\n";
+        os << "Polygone: " << "\n";
+        os << "Proprietaire: " << this->getProprietaire() << "\n";
+        os << "Surface: " << this->getSurface() << " m²\n";
+    }
 
 protected:
-    Parcelle<T>* parcelle_; ///< Pointer to the associated parcel.
     T surfaceConstruite_; ///< Constructible surface area.
 };
-
-template<typename T>
-ZN<T>::ZN(int num, std::string prop, Polygone<T> forme) : Constructible<T>(num,prop,forme)
-{
-    parcelle_ = static_cast<Parcelle<T>*>(this);
-    this->surfaceConstruite_ = 0;
-}
-
-template<typename T>
-ZN<T>::~ZN()
-{
-    parcelle_ = nullptr;
-}
 
 template<typename T>
 T ZN<T>::surfaceConstructible()
 {
     return (T)0;
-}
-
-template<typename T>
-void ZN<T>::setSurfaceConstruite(const T& surfaceConstructible) const
-{
-    throw std::runtime_error("Tried to set a built surface on a ZN");
-}
-
-template<typename T>
-void ZN<T>::setSurfaceConstruite(const T& surfaceConstructible) const {
-}
-
-template<typename T>
-void ZN<T>::setType(const std::string& type)
-{
-    //Fleme
 }

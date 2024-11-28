@@ -2,7 +2,7 @@
 //
 
 #include <iostream>
-#include <Point2D.h>
+#include "Point2D.h"
 
 using std::cout;
 using std::endl;

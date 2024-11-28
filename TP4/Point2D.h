@@ -1,5 +1,7 @@
 #pragma once
 
+#include <iostream>
+
 template<typename T>
 class Point2D {
 public:
@@ -56,4 +58,12 @@ void Point2D<T>::translate(T x, T y)
 {
 	this->x_ += x;
 	this->y_ += y;
+}
+
+template<typename T>
+std::ostream& operator<<(std::ostream& os, const Point2D<T>& point2d) {
+	os << "X : " << point2d.getX() << std::endl;
+	os << "Y : " << point2d.getY();
+
+    return os;
 }

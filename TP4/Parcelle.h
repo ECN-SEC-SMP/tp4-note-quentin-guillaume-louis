@@ -3,6 +3,7 @@
 #include "Polygone.h"
 #include <iostream>
 #include "utility.h"
+
 /**
  * @class Parcelle
  * @brief Represents a land parcel with specific properties and a polygonal shape.
@@ -94,6 +95,7 @@ private:
     T _surface;                /**< The surface area of the parcel. */
     Polygone<T> _forme;          /**< The polygonal shape of the parcel. */
     int _pConstructible;           /**< Indicates constructibility status (e.g., 0 = not constructible). */
+
 };
 
 

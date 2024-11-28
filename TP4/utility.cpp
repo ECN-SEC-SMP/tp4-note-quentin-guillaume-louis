@@ -32,8 +32,8 @@ float Calcul_surface(const Polygone<int>& form)
 }
 
 
-std::vector<std::pair<int, int>> extractCoordinates(const std::string& input) {
-    std::vector<std::pair<int, int>> coordinates;
+std::vector<Point2D<T>> extractCoordinates(const std::string& input) {
+    std::vector<Point2D<T>> coordinates;
     size_t start = 0, end;
     while ((start = input.find('[', start)) != std::string::npos) {
     
@@ -48,7 +48,8 @@ std::vector<std::pair<int, int>> extractCoordinates(const std::string& input) {
         int x, y;
         char semicolon;  // sert à supprimer le ;
         if (pairStream >> x >> semicolon >> y) { //utilisation du istringstream - conversion en entier
-            coordinates.push_back({x, y});	//coordonées 
+            Point2D nouveauPoint(x,y);
+            coordinates.push_back(nouveauPoint);	//coordonées 
         }
 
         start = end + 1;	//décale le prochain démarrage

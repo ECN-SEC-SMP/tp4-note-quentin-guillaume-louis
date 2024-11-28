@@ -15,7 +15,7 @@ public:
 	~ZN();
 
 	T surfaceConstructible() override;
-	void setSurfaceConstruite(const T& surfaceConstructible) const;
+	void setSurfaceConstruite(const T& surfaceConstructible);
 
 	static string typeZone() override {
 		return string("Zone Naturelle");
@@ -44,7 +44,7 @@ T ZN<T>::surfaceConstructible() {
 }
 
 template<typename T>
-void ZN<T>::setSurfaceConstruite(const T& surfaceConstructible) const {
+void ZN<T>::setSurfaceConstruite(const T& surfaceConstructible) {
 }
 
 #endif // ZN_H

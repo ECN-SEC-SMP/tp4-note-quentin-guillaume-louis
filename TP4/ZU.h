@@ -13,7 +13,7 @@ public:
 	~ZU();
 
 	T surfaceConstructible() override;
-	void setSurfaceConstruite(const T& surfaceConstructible) const;
+	void setSurfaceConstruite(const T& surfaceConstructible);
 
 	static string typeZone() override {
 		return string("Zone Urbaine");
@@ -42,7 +42,7 @@ T ZU<T>::surfaceConstructible() {
 }
 
 template<typename T>
-void ZU<T>::setSurfaceConstruite(const T& surfaceConstructible) const {
+void ZU<T>::setSurfaceConstruite(const T& surfaceConstructible) {
 	surfaceConstruite_ = surfaceConstructible;
 }
 

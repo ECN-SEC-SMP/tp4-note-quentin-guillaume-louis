@@ -11,6 +11,7 @@ class Carte
 {
 public:
     Carte(const std::istringstream& input);
+    std::istringstream getOutputFile();
 private:
     std::vector<Parcelle<T>> listeParcelles;
     float surfaceTotale;

@@ -2,7 +2,7 @@
 
 #include <string>
 #include <iostream>
-#include "Parcelle.h"  // Assurez-vous d'inclure Parcelle.h
+#include "Parcelle.h"
 
 /**
  * @class Constructible
@@ -18,29 +18,19 @@ template<typename T>
 class Constructible : public Parcelle<T>
 {
 public:
-    /**
-     * @brief Default constructor.
-     *
-     * Allows the creation of derived class objects.
-     */
+    
     Constructible() = default;
 
     Constructible(int num, std::string prop, Polygone<T> forme);
 
-    /**
-     * @brief Pure virtual method to compute the constructible surface area.
-     *
-     * Derived classes must implement this method to provide the surface
-     * area of the constructible zone.
-     *
-     * @return The surface area of the constructible zone as type T.
-     */
-    virtual T surfaceConstructible() = 0;  // Méthode virtuelle pure
+    
+    virtual T surfaceConstructible() = 0;
 
+    virtual void affiche(std::ostream& os) override {
+        os << "classe Construction";
+    };
 };
 
-// Définition du constructeur dans le fichier source (si nécessaire)
+// Dï¿½finition du constructeur dans le fichier source (si nï¿½cessaire)
 template<typename T>
-Constructible<T>::Constructible(int num, std::string prop, Polygone<T> forme) {    
-    this->Parcelle<T>(num, prop, forme);
-}
+Constructible<T>::Constructible(int num, std::string prop, Polygone<T> forme) : Parcelle<T>(num, prop, forme) {}

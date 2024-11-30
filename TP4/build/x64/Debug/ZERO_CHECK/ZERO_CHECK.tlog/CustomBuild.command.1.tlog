@@ -1,0 +1,10 @@
+^C:\USERS\GUILL\DOCUMENTS\TP_ECN\SMP\TP4 - NOTÉ\TP4-NOTE-QUENTIN-GUILLAUME-LOUIS\TP4\BUILD\CMAKEFILES\AE6E0EBDFC80E86A661AABB2D38BA0D5\GENERATE.STAMP.RULE
+setlocal
+C:\Users\guill\Documents\cmake-3.27.7-windows-x86_64\bin\cmake.exe "-SC:/Users/guill/Documents/TP_ECN/SMP/TP4 - noté/tp4-note-quentin-guillaume-louis/TP4" "-BC:/Users/guill/Documents/TP_ECN/SMP/TP4 - noté/tp4-note-quentin-guillaume-louis/TP4/build" --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file "C:/Users/guill/Documents/TP_ECN/SMP/TP4 - noté/tp4-note-quentin-guillaume-louis/TP4/build/MyProject.sln"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

@@ -48,7 +48,7 @@ ZAU<T>::ZAU(int num, std::string prop, Polygone<T> forme) : Constructible<T>(num
 
 template<typename T>
 T ZAU<T>::surfaceConstructible() {
-    return parcelle_->getSurface();
+    return this->getSurface();
 }
 
 template<typename T>

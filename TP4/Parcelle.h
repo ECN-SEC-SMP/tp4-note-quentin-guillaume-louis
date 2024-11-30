@@ -3,7 +3,6 @@
 #include "Polygone.h"
 #include <iostream>
 #include "utility.h"
-#include "Constructible.h"
 
 /**
  * @class Parcelle
@@ -174,14 +173,14 @@ void Parcelle<T>::setForme(const Polygone<T>& form)
     T x_future = 0;
     T y_future = 0;
     T result = 0.0;                //premier point - nul
-    for (unsigned int i = 0; i < (vector_size - 1); i++)       // -1 pour éviter un overflow
+    for (unsigned int i = 0; i < (vector_size - 1); i++)       // -1 pour ï¿½viter un overflow
     {
-        x_future = points[i + 1].getX();                      //on récupère les points futurs
+        x_future = points[i + 1].getX();                      //on rï¿½cupï¿½re les points futurs
         y_future = points[i + 1].getY();
 
-        result += (x_current * y_future - x_future * y_current); //formule donnée 
+        result += (x_current * y_future - x_future * y_current); //formule donnï¿½e 
 
-        x_current = x_future;                               //on réassigne pour évitere de lire deux fois le même point
+        x_current = x_future;                               //on rï¿½assigne pour ï¿½vitere de lire deux fois le mï¿½me point
         y_current = y_future;
     }
     this->_surface = result / 2;                                      //division finale par deux - donc uniquement X.0 ou X.5 - un float est-il vraiment utile? 

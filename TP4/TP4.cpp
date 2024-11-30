@@ -2,12 +2,30 @@
 //
 
 #include <iostream>
+#include <vector>
+#include "Polygone.h"
 #include "ZA.h"
+#include "ZN.h"
+#include "ZU.h"
+#include "ZAU.h"
+
+
 
 int main(void)
 {
   // TEST DES CLASSES
-  
+	std::vector<Point2D<int>> tab[] = {
+		{ Point2D<int>(0, 1)},   // Premier vecteur
+		{ Point2D<int>(1, 2)},   // Deuxième vecteur
+		{ Point2D<int>(2, 3)}
+	};
+
+	Polygone<int> pol(*tab);
+
+	ZN a(0, "fsefesf", pol);
+
+	//ZA ZoneA<int>(0, "Jean-louis", pol, "champs vide");
+
   return 0;
 }
 

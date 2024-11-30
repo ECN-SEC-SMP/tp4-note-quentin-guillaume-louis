@@ -30,7 +30,7 @@ public:
      * @brief Calculates the constructible surface of the zone.
      * @return The surface area of the zone as type T.
      */
-    T surfaceConstructible() override;
+    virtual T surfaceConstructible() override;
     void setSurfaceConstruite(const T& surfaceConstructible);
 
     /**

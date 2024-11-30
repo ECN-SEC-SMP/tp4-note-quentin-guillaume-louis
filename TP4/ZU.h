@@ -12,7 +12,7 @@ public:
 	ZU() = delete;
 	explicit ZU(int num, std::string prop, Polygone<T> forme);
 
-	T surfaceConstructible() override;
+	virtual T surfaceConstructible() override;
 	void setSurfaceConstruite(const T& surfaceConstructible);
 	T constructible() const;
 

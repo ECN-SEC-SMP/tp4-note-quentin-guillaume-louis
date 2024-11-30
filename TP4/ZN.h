@@ -21,17 +21,14 @@ public:
     ZN() = delete;
 
 
-    ZN(int num, std::string prop, Polygone<T> forme) : Constructible<T>(num, prop, forme)
-    {
-        this->setType("ZN");
-    }
+    ZN(int num, std::string prop, Polygone<T> forme);
 
     /**
      * @brief Returns the constructible surface area for the zone.
      *
      * @return The constructible surface area, which is always 0 for ZN.
      */
-    T surfaceConstructible() override;
+    virtual T surfaceConstructible() override;
     /**
      * @brief Sets the constructible surface area.
      *
@@ -49,6 +46,12 @@ public:
 protected:
     T surfaceConstruite_; ///< Constructible surface area.
 };
+
+template<typename T>
+ZN<T>::ZN(int num, std::string prop, Polygone<T> forme) : Constructible<T>(num, prop, forme)
+{
+    this->setType("ZN");
+}
 
 template<typename T>
 T ZN<T>::surfaceConstructible()

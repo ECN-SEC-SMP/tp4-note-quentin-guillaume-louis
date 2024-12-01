@@ -7,3 +7,4 @@
 *.sln
 /TP4/*.htm
 /compte-rendu/DRAWIO/*bkp
+/TP4/build/*

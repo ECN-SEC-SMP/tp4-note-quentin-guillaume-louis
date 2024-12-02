@@ -34,3 +34,10 @@ public:
 // D�finition du constructeur dans le fichier source (si n�cessaire)
 template<typename T>
 Constructible<T>::Constructible(int num, std::string prop, Polygone<T> forme) : Parcelle<T>(num, prop, forme) {}
+
+template<typename T>
+std::ostream& operator<<(std::ostream& os, const Constructible<T>* parcelle) {
+    parcelle->affiche(os);
+
+    return os;
+}

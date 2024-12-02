@@ -58,3 +58,10 @@ T ZN<T>::surfaceConstructible()
 {
     return (T)0;
 }
+
+template<typename T>
+std::ostream& operator<<(std::ostream& os, ZN<T>& obj) {
+    obj.affiche(os);
+
+    return os;
+}

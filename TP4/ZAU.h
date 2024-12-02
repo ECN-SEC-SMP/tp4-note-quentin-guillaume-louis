@@ -60,3 +60,10 @@ template<typename T>
 T ZAU<T>::constructible() const {
     return (1 - (surfaceConstruite_ / this->getSurface()));
 }
+
+template<typename T>
+std::ostream& operator<<(std::ostream& os, ZAU<T>& obj) {
+    obj.affiche(os);
+
+    return os;
+}

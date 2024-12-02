@@ -21,9 +21,19 @@ int main(void)
 	};
 
 	Polygone<int> pol(*tab);
-
-	ZN a(0, "fsefesf", pol);
-
+	ZN<int> ZoneA(0, "Jean Yves", pol);
+	ZA<int> ZoneB(0, "Jean Bernard", pol, "Courgettes");
+	ZU<int> ZoneC(0, "Jean Pierre", pol);
+	ZAU<int> ZoneD(0, "Jean Luc", pol);
+	
+	std::cout << ZoneA;
+	std::cout << "\n----------------\n";
+	std::cout << ZoneB;
+	std::cout << "\n----------------\n";
+	std::cout << ZoneC;
+	std::cout << "\n----------------\n";
+	std::cout << ZoneD;
+	
 	//ZA ZoneA<int>(0, "Jean-louis", pol, "champs vide");
 
   return 0;

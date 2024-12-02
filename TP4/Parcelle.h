@@ -90,7 +90,7 @@ public:
         os << "classe Parcelle";
     };
 
-private:
+protected:
     std::string _type;             /**< The type of the parcel. */
     int _numero;                   /**< The unique identifier of the parcel. */
     std::string _proprietaire;     /**< The owner of the parcel. */
@@ -193,7 +193,7 @@ void Parcelle<T>::setType(const std::string& type) {
 }
 
 template<typename T>
-std::ostream& operator<<(std::ostream& os, const Parcelle<T>* parcelle) {
+std::ostream& operator<<(std::ostream& os, const Parcelle<T>& parcelle) {
     parcelle->affiche(os);
 
     return os;

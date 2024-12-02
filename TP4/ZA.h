@@ -102,3 +102,10 @@ template<typename T>
 void ZA<T>::setSurfaceConstruite(const T& surfaceConstructible) {
     surfaceConstruite_ = surfaceConstructible;
 }
+
+template<typename T>
+std::ostream& operator<<(std::ostream& os, ZA<T>& obj) {
+    obj.affiche(os);
+
+    return os;
+}

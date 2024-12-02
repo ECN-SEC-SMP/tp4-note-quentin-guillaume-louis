@@ -53,4 +53,12 @@ T ZU<T>::constructible() const {
 	return (1 - (surfaceConstruite_ / this->getSurface()));
 }
 
+template<typename T>
+std::ostream& operator<<(std::ostream& os, ZU<T>& obj) {
+	obj.affiche(os);
+
+	return os;
+}
+
+
 #endif // ZU_H

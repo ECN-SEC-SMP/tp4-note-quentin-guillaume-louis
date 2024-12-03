@@ -21,8 +21,8 @@ public:
 		os << "Type: " << this->getType() << "\n";
 		os << "Polygone: " << "\n";
 		os << "Proprietaire: " << this->getProprietaire() << "\n";
-		os << "Surface: " << this->getSurface() << " m²\n";
-		os << "% constructible: " << this->constructible() << " m²\n";
+		os << "Surface: " << this->_surface << " m^2\n";
+		os << "% constructible: " << this->constructible() << " m^2\n";
 		os << "Surface construite: " << this->surfaceConstruite_ << "\n";
 		os << "Surface a construire restante: " << this->surfaceConstructible() << "\n";
 	}

@@ -44,7 +44,7 @@ public:
         os << "Type: " << this->getType() << "\n";
         os << "Polygone: " << "\n";
         os << "Proprietaire: " << this->getProprietaire() << "\n";
-        os << "Surface: " << this->getSurface() << " m²\n";
+        os << "Surface: " << (int)this->getSurface() << " m²\n";
         os << "Type Culture: " << this->typeDeCulture_ << "\n";
     }
 

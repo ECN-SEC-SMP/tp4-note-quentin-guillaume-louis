@@ -115,8 +115,8 @@ Parcelle<T>::Parcelle(const Parcelle<T>& parc)
 template<typename T>
 Parcelle<T>::Parcelle(int num, std::string prop, Polygone<T> forme) : _forme(forme), _proprietaire(prop), _numero(num)
 {
-    this->_surface = 0.0f;
     this->_pConstructible = 0;
+    setForme(_forme);
 }
 
 template<typename T>
@@ -165,26 +165,27 @@ template<typename T>
 void Parcelle<T>::setForme(const Polygone<T>& form)
 {
     this->_forme = form;
-    std::vector<Point2D<T>> points;
-    points = form.getSommets();
+    std::vector<Point2D<T>> points = form.getSommets();
     unsigned int vector_size = points.size();
-    T x_current = points[0].getX();
-    T y_current = points[0].getY();
-    T x_future = 0;
-    T y_future = 0;
-    T result = 0.0;                //premier point - nul
-    for (unsigned int i = 0; i < (vector_size - 1); i++)       // -1 pour �viter un overflow
-    {
-        x_future = points[i + 1].getX();                      //on r�cup�re les points futurs
-        y_future = points[i + 1].getY();
 
-        result += (x_current * y_future - x_future * y_current); //formule donn�e 
+    T result = 0;
 
-        x_current = x_future;                               //on r�assigne pour �vitere de lire deux fois le m�me point
-        y_current = y_future;
+    // On boucle sur les sommets, en fermant le polygone (relier dernier au premier)
+    for (unsigned int i = 0; i < vector_size; ++i) {
+        // Les coordonnées du point courant
+        T x_current = points[i].getX();
+        T y_current = points[i].getY();
+
+        // Le prochain point (en fermant le polygone)
+        T x_next = points[(i + 1) % vector_size].getX();
+        T y_next = points[(i + 1) % vector_size].getY();
+
+        // Ajout de la contribution de ce segment à l'aire
+        result += x_current * y_next - x_next * y_current;
     }
-    this->_surface = result / 2;                                      //division finale par deux - donc uniquement X.0 ou X.5 - un float est-il vraiment utile? 
 
+    this->_surface = std::abs(result) / 2;  // Aire positive
+    
 }
 
 template<typename T>

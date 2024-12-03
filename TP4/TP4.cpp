@@ -8,23 +8,33 @@
 #include "ZN.h"
 #include "ZU.h"
 #include "ZAU.h"
+#include "utility.h"
 
 
 
 int main(void)
 {
   // TEST DES CLASSES
-	std::vector<Point2D<int>> tab[] = {
-		{ Point2D<int>(0, 1)},   // Premier vecteur
-		{ Point2D<int>(1, 2)},   // Deuxième vecteur
-		{ Point2D<int>(2, 3)}
+	std::vector<Point2D<int>> tab = {
+		{ Point2D<int>(0, 0) },   // Premier vecteur
+		{ Point2D<int>(4, 0) },   // Deuxième vecteur
+		{ Point2D<int>(2, 4) }
 	};
 
-	Polygone<int> pol(*tab);
+	// TEST
+	Polygone<int> pol(tab);
+	
+	std::cout << "tab.size() -> ";
+	std::cout << tab.size() << std::endl;
+	std::cout << "calcul surface : ";
+	std::cout << Calcul_surface(pol) << std::endl;
+	std::cout << "\n----------------\n";
+
+
 	ZN<int> ZoneA(0, "Jean Yves", pol);
-	ZA<int> ZoneB(0, "Jean Bernard", pol, "Courgettes");
-	ZU<int> ZoneC(0, "Jean Pierre", pol);
-	ZAU<int> ZoneD(0, "Jean Luc", pol);
+	ZA<int> ZoneB(1, "Jean Bernard", pol, "Courgettes");
+	ZU<int> ZoneC(2, "Jean Pierre", pol);
+	ZAU<int> ZoneD(3, "Jean Luc", pol);
 	
 	std::cout << ZoneA;
 	std::cout << "\n----------------\n";
